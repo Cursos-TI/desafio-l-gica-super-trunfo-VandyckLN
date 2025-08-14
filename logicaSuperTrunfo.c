@@ -1,43 +1,76 @@
 #include <stdio.h>
-
+#include <string.h>
 // Desafio Super Trunfo - Países
 // Tema 2 - Comparação das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
 // Siga os comentários para implementar cada parte do desafio.
 
-int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+/**
+ * Projeto: Sistema de Territórios para Jogo de War
+ * Descrição: Este programa permite o cadastro e visualização de 5 territórios,
+ *            armazenando informações como nome, cor do exército e quantidade de tropas.
+ * Data: 13/08/2025
+ */
 
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+/**
+ * Definição da estrutura Territorio que armazena:
+ * - nome: nome do território (até 29 caracteres + '\0')
+ * - cor: cor do exército que ocupa o território (até 9 caracteres + '\0')
+ * - tropas: quantidade de tropas no território
+ */
+typedef struct
+{
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+int principal()
+{
+    // Declaração do vetor de estruturas para armazenar 5 territórios
+    Territorio territorios[5];
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    printf("===== CADASTRO DE TERRITORIOS =====\n\n");
+
+    // Laço para entrada de dados dos territórios
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Cadastro do territorio %d:\n", i + 1);
+
+        // Leitura do nome do território
+        printf("Nome do territorio: ");
+        scanf("%29s", territorios[i].nome);
+
+        // Limpar o buffer de entrada
+        fflush(stdin);
+
+        // Leitura da cor do exército
+        printf("Cor do exercito: ");
+        scanf("%9s", territorios[i].cor);
+
+        // Leitura da quantidade de tropas
+        printf("Quantidade de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+
+        printf("\n");
+    }
+
+    // Exibição dos dados dos territórios cadastrados
+    printf("\n===== TERRITORIOS CADASTRADOS =====\n\n");
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Territorio %d:\n", i + 1);
+        printf("  Nome: %s\n", territorios[i].nome);
+        printf("  Cor do exercito: %s\n", territorios[i].cor);
+        printf("  Tropas: %d\n", territorios[i].tropas);
+        printf("\n");
+    }
+
+    printf("===== FIM DO PROGRAMA =====\n");
 
     return 0;
 }
